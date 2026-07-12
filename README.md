@@ -24,7 +24,7 @@ graphs to backpropagation, attention, and a false-discovery-rate correction.
 ## Computer vision
 
 - [image-classification-pytorch](https://github.com/aamirmalik-dr/image-classification-pytorch) - A CIFAR-10 architecture study (MLP, CNN, VGG-style, ResNet-style) with a regularization ablation.
-- [medical-image-classification](https://github.com/aamirmalik-dr/medical-image-classification) - A chest X-ray screening methodology demo on synthetic images, comparing a from-scratch CNN with a transfer-learning ResNet-18 and reporting sensitivity and specificity. A teaching example, not a clinical tool.
+- [medical-image-classification](https://github.com/aamirmalik-dr/medical-image-classification) - Chest X-ray pneumonia screening on the public MedMNIST PneumoniaMNIST dataset, comparing a from-scratch CNN with a transfer-learning ResNet-18 and reporting sensitivity and specificity. A teaching example, not a clinical tool.
 - [gan-image-generation](https://github.com/aamirmalik-dr/gan-image-generation) - A DCGAN generating handwritten digits, with a clean training loop and sample grids.
 - [adversarial-attacks](https://github.com/aamirmalik-dr/adversarial-attacks) - FGSM, iterative, and least-likely-class attacks on an image classifier, with robustness-versus-epsilon curves.
 
