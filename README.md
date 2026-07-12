@@ -15,6 +15,7 @@ graphs to backpropagation, attention, and a false-discovery-rate correction.
 - [graph-neural-networks-for-molecules](https://github.com/aamirmalik-dr/graph-neural-networks-for-molecules) - Message passing neural networks (MPNN and GCN) for molecular property prediction, written from scratch in PyTorch with no graph-learning framework. Benchmarked on public MoleculeNet ESOL.
 - [molecular-property-prediction](https://github.com/aamirmalik-dr/molecular-property-prediction) - A controlled comparison of three molecular representations (Morgan fingerprints, SMILES CNN, SMILES RNN) on one codebase, with RDKit-computed targets.
 - [molecular-generative-models](https://github.com/aamirmalik-dr/molecular-generative-models) - A SMILES autoencoder and variational autoencoder with reparameterization and KL annealing, scored on validity, uniqueness, and novelty.
+- [stem-atom-finder](https://github.com/aamirmalik-dr/stem-atom-finder) - Atomic column detection in simulated scanning transmission electron microscope images: a Laplacian-of-Gaussian detector versus a compact U-Net across a 2000x electron dose range, with an oracle-tuned baseline as the fairness control.
 
 ## Deep learning and classical ML from scratch
 
