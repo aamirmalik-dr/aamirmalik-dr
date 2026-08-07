@@ -2,8 +2,9 @@
 
 Computational materials scientist (PhD, KAIST) working at the intersection of
 machine learning and the physical sciences. My work spans molecular
-representation learning, deep learning for electron microscopy, active learning
-and uncertainty quantification, generative models, and classical statistics.
+representation learning, machine-learned interatomic potentials, deep learning
+for electron microscopy, active learning and uncertainty quantification,
+generative models, and classical statistics.
 A consistent thread is building the core machinery from scratch, message passing
 on molecular graphs, backpropagation, attention, Gaussian-process posteriors, and
 a false-discovery-rate correction, and pairing every learned method against a
@@ -16,6 +17,10 @@ ones.
 - [graph-neural-networks-for-molecules](https://github.com/aamirmalik-dr/graph-neural-networks-for-molecules) - Message passing neural networks (MPNN and GCN) for molecular property prediction, written from scratch in PyTorch with no graph-learning framework, benchmarked on public MoleculeNet ESOL with a message-passing depth ablation.
 - [molecular-property-prediction](https://github.com/aamirmalik-dr/molecular-property-prediction) - A controlled comparison of three molecular representations, Morgan fingerprint MLP, SMILES 1D-CNN, and SMILES LSTM, on one codebase, with RDKit-computed targets.
 - [molecular-generative-models](https://github.com/aamirmalik-dr/molecular-generative-models) - A from-scratch SMILES GRU autoencoder and variational autoencoder with reparameterization and KL annealing, scored on validity, uniqueness, and novelty.
+
+## Machine learning interatomic potentials
+
+- [mlip-descriptor-potential](https://github.com/aamirmalik-dr/mlip-descriptor-potential) - A Behler-Parrinello neural network potential for BCC TiZrNb solid solutions, built from scratch in PyTorch: periodic neighbor lists, atom-centered symmetry functions, per-element networks, and autograd forces. Distilled from a universal-potential teacher (labels clearly marked as surrogate, not DFT), benchmarked at matched budget against a tuned ridge model on identical descriptors and a Morse pair potential, with a leakage-safe group split whose optimistic random-frame alternative is measured (2.8x on energies), equation-of-state validation against Materials Project anchors, and a sub-0.001 meV/atom/ps NVE drift check.
 
 ## Deep learning for electron microscopy imaging
 
@@ -67,7 +72,7 @@ ones.
 
 - Languages: Python, R
 - Frameworks and libraries: PyTorch, scikit-learn, NumPy, RDKit, statsmodels, networkx, pandas, Matplotlib
-- Methods: message passing neural networks, variational autoencoders, GANs, U-Net semantic segmentation, CNNs, LSTMs, sequence-to-sequence with attention, Gaussian-process regression, active learning, PCA/NMF/VCA and other unsupervised decompositions, ARIMA/SARIMAX time-series forecasting, backpropagation and optimizers from scratch, Benjamini-Hochberg FDR correction and multiple-testing control
+- Methods: message passing neural networks, Behler-Parrinello interatomic potentials with autograd forces, variational autoencoders, GANs, U-Net semantic segmentation, CNNs, LSTMs, sequence-to-sequence with attention, Gaussian-process regression, active learning, PCA/NMF/VCA and other unsupervised decompositions, ARIMA/SARIMAX time-series forecasting, backpropagation and optimizers from scratch, Benjamini-Hochberg FDR correction and multiple-testing control
 
 ## Contact
 
