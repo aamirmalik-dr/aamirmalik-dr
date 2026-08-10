@@ -1,16 +1,28 @@
 # Aamir Malik
 
 Computational materials scientist (PhD, KAIST) working at the intersection of
-machine learning and the physical sciences. My work spans molecular
-representation learning, machine-learned interatomic potentials, deep learning
-for electron microscopy, active learning and uncertainty quantification,
-generative models, and classical statistics.
-A consistent thread is building the core machinery from scratch, message passing
-on molecular graphs, backpropagation, attention, Gaussian-process posteriors, and
-a false-discovery-rate correction, and pairing every learned method against a
-fair-tuned baseline. Each repository below has an honest README, a reproducible
-demo that was actually run, and only real measured results, including the negative
-ones.
+machine learning and the physical sciences. My work spans machine-learned
+interatomic potentials, molecular representation learning, deep learning for
+electron microscopy, active learning and uncertainty quantification, generative
+models, and classical statistics.
+
+Two habits run through everything here. I build the core machinery from
+scratch, periodic neighbor lists, message passing, backpropagation, attention,
+Gaussian-process posteriors, and I benchmark every learned method against a
+fair-tuned classical baseline. Each repository has an honest README, a
+reproducible demo that was actually run, and only real measured results,
+including the negative ones.
+
+## Machine learning interatomic potentials
+
+Four connected repositories on one chemistry, BCC TiZrNb solid solutions,
+trained by distillation from a universal-potential teacher whose labels are
+clearly marked as surrogate, not DFT, so results compare directly across repos.
+
+- [mlip-descriptor-potential](https://github.com/aamirmalik-dr/mlip-descriptor-potential) - A Behler-Parrinello neural network potential from scratch in PyTorch: periodic neighbor lists, atom-centered symmetry functions, per-element networks, and autograd forces. Benchmarked at matched budget against a tuned ridge model and a Morse pair potential, with a leakage-safe group split and equation-of-state validation against Materials Project anchors.
+- [graph-neural-forcefield](https://github.com/aamirmalik-dr/graph-neural-forcefield) - A SchNet-style message-passing potential on the same chemistry, benchmarked head to head against the descriptor network and the ridge baseline. The headline is data efficiency: it matches the linear baseline's full-data force accuracy with 102 of 882 training frames and halves force error at matched budget.
+- [alloy-mlip-bench](https://github.com/aamirmalik-dr/alloy-mlip-bench) - The potentials deployed as ASE calculators and benchmarked against CHGNet and MACE-MP-0 small on what they predict: equation of state, elastic constants, RDFs, thermal expansion, and vacancy formation. Mean deviation from DFT anchors falls monotonically with CPU cost, and the compact distilled model nearly matches its teacher at 14.6x the MD speed.
+- [forcefield-active-learning](https://github.com/aamirmalik-dr/forcefield-active-learning) - Query-by-committee active learning for these potentials, against a random buyer at identical budget. The honest headline is a measured negative: on a well-mixed pool random selection wins at every budget, and an equation-of-state autopsy shows why; on a redundancy-heavy pool the same committee earns a 2.2x label saving.
 
 ## Molecular representation learning and generative modeling
 
@@ -18,34 +30,27 @@ ones.
 - [molecular-property-prediction](https://github.com/aamirmalik-dr/molecular-property-prediction) - A controlled comparison of three molecular representations, Morgan fingerprint MLP, SMILES 1D-CNN, and SMILES LSTM, on one codebase, with RDKit-computed targets.
 - [molecular-generative-models](https://github.com/aamirmalik-dr/molecular-generative-models) - A from-scratch SMILES GRU autoencoder and variational autoencoder with reparameterization and KL annealing, scored on validity, uniqueness, and novelty.
 
-## Machine learning interatomic potentials
-
-- [mlip-descriptor-potential](https://github.com/aamirmalik-dr/mlip-descriptor-potential) - A Behler-Parrinello neural network potential for BCC TiZrNb solid solutions, built from scratch in PyTorch: periodic neighbor lists, atom-centered symmetry functions, per-element networks, and autograd forces. Distilled from a universal-potential teacher (labels clearly marked as surrogate, not DFT), benchmarked at matched budget against a tuned ridge model on identical descriptors and a Morse pair potential, with a leakage-safe group split whose optimistic random-frame alternative is measured (2.8x on energies), equation-of-state validation against Materials Project anchors, and a sub-0.001 meV/atom/ps NVE drift check.
-- [graph-neural-forcefield](https://github.com/aamirmalik-dr/graph-neural-forcefield) - A SchNet-style continuous-filter message-passing potential for the same BCC TiZrNb chemistry, from scratch in PyTorch on an original periodic neighbor list, benchmarked head to head against a compact ACSF network and a ridge baseline at matched data and budget. The honest headline is data efficiency: the graph network matches the linear baseline's full-data force accuracy with 102 of 882 training frames and halves force error at matched budget (30.9 vs 60.0 meV/A), while full-data energies converge across all three models. Includes a two-model split-protocol control (the leaky random-frame split flatters the descriptor net but not the GNN), EOS validation against Materials Project DFT anchors, machine-precision symmetry invariances, and NVE drift at 0.0003 meV/atom/ps.
-- [alloy-mlip-bench](https://github.com/aamirmalik-dr/alloy-mlip-bench) - Potentials deployed as ASE calculators and benchmarked on what they predict for BCC TiZrNb: a compact distilled potential (6.2k parameters, trained in-repo on surrogate teacher labels) against CHGNet and MACE-MP-0 small, plus a learned pair-potential floor. The property suite runs entirely through the ASE interface: Birch-Murnaghan EOS, finite-difference elastic constants, RDFs from NVT MD, NPT thermal expansion, monovacancy formation, an NVE energy-drift gate every model must pass, and measured ms-per-atom-per-MD-step. Mean deviation from Materials Project DFT anchors falls monotonically with CPU cost (44.5 to 5.9 percent across the four models); the compact model nearly matches its teacher's anchor fidelity at 14.6x the MD speed while faithfully inheriting its defect-energetics errors, and the pair potential's failure is diagnosed structurally through the Cauchy relation its elastic constants obey.
-- [forcefield-active-learning](https://github.com/aamirmalik-dr/forcefield-active-learning) - Query-by-committee active learning for TiZrNb potentials: a deep ensemble of compact from-scratch potentials buys teacher labels where its members disagree on forces, against a random buyer at the identical budget, pool, and training, with labels hidden behind a structural purchase counter. The honest headline is a measured negative: on a well-mixed pool random selection wins at every budget (175 vs 186 meV/A, 18 vs 28 meV/atom at 300 labels) even though the committee's uncertainty ranks true error at Spearman 0.87 to 0.91, and the acquisition map plus an equation-of-state autopsy show why (top-k buys self-similar hard frames and starves equilibrium physics; the random-fed control committee reproduces the teacher's Nb EOS while the active one collapses its bulk modulus). On a redundancy-heavy pool where informative frames are rare, the same committee earns a 2.2x label saving, and a sibling-frame evaluation is shown to reverse the honest ranking entirely.
-
 ## Deep learning for electron microscopy imaging
 
 - [stem-atom-finder](https://github.com/aamirmalik-dr/stem-atom-finder) - Atomic column detection in simulated HAADF-STEM images: a Laplacian-of-Gaussian detector versus a compact U-Net across a 2000x electron dose range, with sub-pixel refinement and an oracle-tuned baseline as the fairness control.
-- [stem-denoising-restoration](https://github.com/aamirmalik-dr/stem-denoising-restoration) - Restoration of low-dose electron microscope images, scored by image fidelity and by downstream atom detection against exact ground truth. Variance-stabilized classical denoisers versus a residual U-Net trained supervised and as self-supervised Noise2Noise, with fair-tuning and off-distribution checks that map where the learned advantage ends.
-- [stem-defect-segmentation](https://github.com/aamirmalik-dr/stem-defect-segmentation) - Pixel-level segmentation of simulated STEM into five classes (background, lattice, vacancy, dopant, disordered) with exact per-pixel ground truth. A threshold-and-morphology baseline and a random-forest pixel classifier versus a multi-class U-Net, scored on per-class IoU and Dice plus a boundary-localization error, with a class-imbalance analysis.
+- [stem-denoising-restoration](https://github.com/aamirmalik-dr/stem-denoising-restoration) - Restoration of low-dose electron microscope images, scored by image fidelity and by downstream atom detection. Variance-stabilized classical denoisers versus a residual U-Net trained supervised and as self-supervised Noise2Noise, with off-distribution checks that map where the learned advantage ends.
+- [stem-defect-segmentation](https://github.com/aamirmalik-dr/stem-defect-segmentation) - Pixel-level segmentation of simulated STEM into five classes with exact per-pixel ground truth. A threshold-and-morphology baseline and a random-forest pixel classifier versus a multi-class U-Net, scored on per-class IoU, Dice, and boundary-localization error.
 
 ## Machine learning for diffraction and spectroscopy
 
-- [diffraction-structure-classifier](https://github.com/aamirmalik-dr/diffraction-structure-classifier) - Crystal-structure classification from simulated kinematical electron diffraction, comparing a tuned classical baseline, a 1D radial-profile CNN, and a 2D rotation-invariant polar-Fourier CNN, with confidence intervals, paired significance tests, and a shortcut control that measures how much accuracy is material identity rather than structure-type geometry.
-- [eels-spectrum-unmixing](https://github.com/aamirmalik-dr/eels-spectrum-unmixing) - Unsupervised decomposition of simulated STEM-EELS spectrum images into endmember spectra and abundance maps, scored against exact ground truth. PCA, NMF, and a from-scratch VCA versus a constrained linear-unmixing autoencoder across dose, energy-drift, and spectral-overlap sweeps, with a fair-tuning audit of the baseline.
-- [4d-stem-orientation-mapping](https://github.com/aamirmalik-dr/4d-stem-orientation-mapping) - Orientation and phase mapping from simulated 4D-STEM datacubes: virtual imaging, template matching with sub-step refinement, a symmetry-aware CNN, and unsupervised grain clustering against exact ground truth. The headline is a negative result reported plainly: fair-tuned template matching beats the CNN at every dose on in-model data, and a forward-model-mismatch benchmark measures where that gap nearly closes.
+- [diffraction-structure-classifier](https://github.com/aamirmalik-dr/diffraction-structure-classifier) - Crystal-structure classification from simulated electron diffraction, comparing a tuned classical baseline, a 1D radial-profile CNN, and a 2D rotation-invariant polar-Fourier CNN, with a shortcut control that measures how much accuracy is material identity rather than structure-type geometry.
+- [eels-spectrum-unmixing](https://github.com/aamirmalik-dr/eels-spectrum-unmixing) - Unsupervised decomposition of simulated STEM-EELS spectrum images into endmember spectra and abundance maps. PCA, NMF, and a from-scratch VCA versus a constrained linear-unmixing autoencoder across dose, energy-drift, and spectral-overlap sweeps.
+- [4d-stem-orientation-mapping](https://github.com/aamirmalik-dr/4d-stem-orientation-mapping) - Orientation and phase mapping from simulated 4D-STEM datacubes: template matching with sub-step refinement, a symmetry-aware CNN, and unsupervised grain clustering. The headline is a negative result reported plainly: fair-tuned template matching beats the CNN at every dose on in-model data.
 
 ## Active learning and uncertainty quantification
 
-- [active-learning-microscopy](https://github.com/aamirmalik-dr/active-learning-microscopy) - A simulation study of the autonomous-experiment loop: when does a Gaussian-process-steered probe beat a competent space-filling scan at mapping a property field or finding rare defects, scored against exact ground truth. A from-scratch GP with exact rank-one sequential posterior updates and expected-exceedance defect hunting, with measured failure regimes reported plainly, including where a misspecified surrogate makes active sampling the worst strategy in the comparison.
-- [gaussian-process-flow-modeling](https://github.com/aamirmalik-dr/gaussian-process-flow-modeling) - Gaussian-process regression reconstructing a divergence-free 2D velocity field from sparse noisy samples, with RK4 particle advection and a calibrated uncertainty map. This is the uncertainty-quantification counterpart to the active-learning study, GP posteriors without an acquisition loop.
+- [active-learning-microscopy](https://github.com/aamirmalik-dr/active-learning-microscopy) - A simulation study of the autonomous-experiment loop: when a Gaussian-process-steered probe beats a competent space-filling scan, scored against exact ground truth. Built on a from-scratch GP with exact sequential posterior updates, with measured failure regimes reported plainly.
+- [gaussian-process-flow-modeling](https://github.com/aamirmalik-dr/gaussian-process-flow-modeling) - Gaussian-process regression reconstructing a divergence-free 2D velocity field from sparse noisy samples, with RK4 particle advection and a calibrated uncertainty map. The uncertainty-quantification counterpart to the active-learning study.
 
 ## Computer vision: classification, generation, and adversarial robustness
 
 - [image-classification-pytorch](https://github.com/aamirmalik-dr/image-classification-pytorch) - A CIFAR-10 architecture study (MLP, CNN, VGG-style, ResNet-style) compared under one training budget, with a regularization ablation.
-- [medical-image-classification](https://github.com/aamirmalik-dr/medical-image-classification) - Chest X-ray pneumonia screening on the public MedMNIST PneumoniaMNIST dataset, comparing a from-scratch CNN with a transfer-learning ResNet-18 and reporting accuracy, recall, and ROC-AUC. A teaching example, not a clinical tool.
+- [medical-image-classification](https://github.com/aamirmalik-dr/medical-image-classification) - Chest X-ray pneumonia screening on public MedMNIST data, comparing a from-scratch CNN with a transfer-learning ResNet-18 and reporting accuracy, recall, and ROC-AUC. A teaching example, not a clinical tool.
 - [gan-image-generation](https://github.com/aamirmalik-dr/gan-image-generation) - A DCGAN generating handwritten digits from noise, with a clean training loop, sample grids, and training-loss curves.
 - [adversarial-attacks](https://github.com/aamirmalik-dr/adversarial-attacks) - FGSM, iterative, and least-likely-class attacks on an image classifier, with robustness-versus-epsilon curves on MNIST.
 
@@ -68,14 +73,15 @@ ones.
 
 - [high-dimensional-genomics-ml](https://github.com/aamirmalik-dr/high-dimensional-genomics-ml) - PCA, clustering, and cross-validated classification on the public Golub leukemia gene-expression set, plus differential expression with a from-scratch Benjamini-Hochberg FDR correction.
 - [tabular-ml-pipeline](https://github.com/aamirmalik-dr/tabular-ml-pipeline) - A reusable scikit-learn pipeline for messy tabular data: ColumnTransformer imputation and encoding, LASSO feature selection, and a tuned multi-model comparison, on the public UCI Adult dataset.
-- [temporal-network-analysis](https://github.com/aamirmalik-dr/temporal-network-analysis) - Per-phase structure and degree, betweenness, and eigenvector centrality trajectories in a time-varying network with networkx, validated on a synthetic role-planted graph, with an optional path to the public SNAP CollegeMsg dataset.
+- [temporal-network-analysis](https://github.com/aamirmalik-dr/temporal-network-analysis) - Per-phase structure and centrality trajectories in a time-varying network with networkx, validated on a synthetic role-planted graph, with an optional path to the public SNAP CollegeMsg dataset.
 - [statistical-methods-in-r](https://github.com/aamirmalik-dr/statistical-methods-in-r) - Hypothesis testing, ANOVA, regression, PCA and factor analysis, and from-scratch association-rule mining, all in base R with no external packages.
 
 ## Skills and tools
 
 - Languages: Python, R
-- Frameworks and libraries: PyTorch, scikit-learn, NumPy, RDKit, statsmodels, networkx, pandas, Matplotlib
-- Methods: message passing neural networks, Behler-Parrinello interatomic potentials with autograd forces, variational autoencoders, GANs, U-Net semantic segmentation, CNNs, LSTMs, sequence-to-sequence with attention, Gaussian-process regression, active learning, PCA/NMF/VCA and other unsupervised decompositions, ARIMA/SARIMAX time-series forecasting, backpropagation and optimizers from scratch, Benjamini-Hochberg FDR correction and multiple-testing control
+- Frameworks and libraries: PyTorch, scikit-learn, NumPy, ASE, RDKit, statsmodels, networkx, pandas, Matplotlib
+- Learned methods: message passing neural networks, interatomic potentials with autograd forces, U-Net segmentation, CNNs, LSTMs, sequence-to-sequence with attention, variational autoencoders, GANs
+- Statistical methods: Gaussian-process regression, active learning, PCA/NMF/VCA decompositions, ARIMA/SARIMAX forecasting, multiple-testing control with Benjamini-Hochberg FDR
 
 ## Contact
 
