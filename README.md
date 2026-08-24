@@ -61,6 +61,7 @@ clearly marked as surrogate, not DFT, so results compare directly across repos.
 
 ## Time series and quantitative finance
 
+- [financial-forecasting-benchmarks](https://github.com/aamirmalik-dr/financial-forecasting-benchmarks) - A walk-forward benchmark of ML models against fair-tuned classical baselines for daily return and volatility forecasting on eight US ETFs over two decades. The headline is a defended null result: next-day returns are essentially unforecastable out of sample, and GARCH(1,1) beats LightGBM and an LSTM at volatility forecasting, with Diebold-Mariano tests and block-bootstrap intervals throughout.
 - [yield-curve-factor-analysis](https://github.com/aamirmalik-dr/yield-curve-factor-analysis) - PCA and NMF of the US Treasury yield curve, recovering the classic level, slope, and curvature factors, with a resilient offline-capable data pipeline.
 - [time-series-forecasting](https://github.com/aamirmalik-dr/time-series-forecasting) - STL decomposition and ARIMA/SARIMAX forecasting with a walk-forward backtest reporting RMSE and MAPE.
 
@@ -81,7 +82,7 @@ clearly marked as surrogate, not DFT, so results compare directly across repos.
 - Languages: Python, R
 - Frameworks and libraries: PyTorch, scikit-learn, NumPy, ASE, RDKit, statsmodels, networkx, pandas, Matplotlib
 - Learned methods: message passing neural networks, interatomic potentials with autograd forces, U-Net segmentation, CNNs, LSTMs, sequence-to-sequence with attention, variational autoencoders, GANs
-- Statistical methods: Gaussian-process regression, active learning, PCA/NMF/VCA decompositions, ARIMA/SARIMAX forecasting, multiple-testing control with Benjamini-Hochberg FDR
+- Statistical methods: Gaussian-process regression, active learning, PCA/NMF/VCA decompositions, ARIMA/SARIMAX and GARCH modeling, walk-forward evaluation with Diebold-Mariano tests and block bootstrap, multiple-testing control with Benjamini-Hochberg FDR
 
 ## Contact
 
