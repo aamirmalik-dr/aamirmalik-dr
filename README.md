@@ -1,4 +1,4 @@
-# Aamir Malik
+﻿# Aamir Malik
 
 Computational materials scientist (PhD, KAIST) working at the intersection of
 machine learning and the physical sciences. My work spans machine-learned
@@ -59,9 +59,17 @@ clearly marked as surrogate, not DFT, so results compare directly across repos.
 - [text-sentiment-lstm](https://github.com/aamirmalik-dr/text-sentiment-lstm) - A bidirectional LSTM sentiment classifier in PyTorch with a from-scratch tokenizer and optional GloVe embeddings, on public Rotten Tomatoes data.
 - [neural-machine-translation](https://github.com/aamirmalik-dr/neural-machine-translation) - A sequence-to-sequence model with Bahdanau attention, built from scratch in PyTorch, demonstrated on a date-normalization task with interpretable attention alignments.
 
-## Time series and quantitative finance
+## Quantitative finance ML
 
+A two-repo cluster on AI in finance, one on downloaded market data and one on
+fully simulated markets, both benchmarking learned methods against fair-tuned
+classical baselines and reporting the negative findings as the point.
+
+- [neural-option-pricing](https://github.com/aamirmalik-dr/neural-option-pricing) - Four option-pricing engines from scratch (Black-Scholes, binomial, Crank-Nicolson, variance-reduced Monte Carlo), Heston priced by characteristic function and simulation, a neural pricing surrogate, and a CVaR-trained deep hedging policy, all on simulated markets. Honest verdicts: the surrogate is 4,600x faster than adaptive quadrature while a well-vectorized 32-node quadrature is 10x more accurate and only 15x slower, and the deep hedger beats naive delta by 11 to 15 percent CVaR under transaction costs while a fairly tuned no-trade band captures most of that gap.
 - [financial-forecasting-benchmarks](https://github.com/aamirmalik-dr/financial-forecasting-benchmarks) - A walk-forward benchmark of ML models against fair-tuned classical baselines for daily return and volatility forecasting on eight US ETFs over two decades. The headline is a defended null result: next-day returns are essentially unforecastable out of sample, and GARCH(1,1) beats LightGBM and an LSTM at volatility forecasting, with Diebold-Mariano tests and block-bootstrap intervals throughout.
+
+## Time series analysis
+
 - [yield-curve-factor-analysis](https://github.com/aamirmalik-dr/yield-curve-factor-analysis) - PCA and NMF of the US Treasury yield curve, recovering the classic level, slope, and curvature factors, with a resilient offline-capable data pipeline.
 - [time-series-forecasting](https://github.com/aamirmalik-dr/time-series-forecasting) - STL decomposition and ARIMA/SARIMAX forecasting with a walk-forward backtest reporting RMSE and MAPE.
 
