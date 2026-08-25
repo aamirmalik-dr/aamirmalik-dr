@@ -47,18 +47,6 @@ clearly marked as surrogate, not DFT, so results compare directly across repos.
 - [active-learning-microscopy](https://github.com/aamirmalik-dr/active-learning-microscopy) - A simulation study of the autonomous-experiment loop: when a Gaussian-process-steered probe beats a competent space-filling scan, scored against exact ground truth. Built on a from-scratch GP with exact sequential posterior updates, with measured failure regimes reported plainly.
 - [gaussian-process-flow-modeling](https://github.com/aamirmalik-dr/gaussian-process-flow-modeling) - Gaussian-process regression reconstructing a divergence-free 2D velocity field from sparse noisy samples, with RK4 particle advection and a calibrated uncertainty map. The uncertainty-quantification counterpart to the active-learning study.
 
-## Quantitative finance and time series
-
-A cluster on markets and time series: daily return and volatility forecasting,
-option pricing and deep hedging, yield-curve factor structure, and classical
-forecasting methodology. Learned methods are benchmarked against fair-tuned
-classical baselines, and the defended null results are the point.
-
-- [financial-forecasting-benchmarks](https://github.com/aamirmalik-dr/financial-forecasting-benchmarks) - A walk-forward benchmark of ML models against fair-tuned classical baselines for daily return and volatility forecasting on eight US ETFs over two decades. The headline is a defended null result: next-day returns are essentially unforecastable out of sample, and GARCH(1,1) beats LightGBM and an LSTM at volatility forecasting, with Diebold-Mariano tests and block-bootstrap intervals throughout.
-- [neural-option-pricing](https://github.com/aamirmalik-dr/neural-option-pricing) - Four option-pricing engines from scratch (Black-Scholes, binomial, Crank-Nicolson, variance-reduced Monte Carlo), Heston priced by characteristic function and simulation, a neural pricing surrogate, and a CVaR-trained deep hedging policy, all on simulated markets. Honest verdicts: the surrogate is 4,600x faster than adaptive quadrature while a well-vectorized 32-node quadrature is 9x more accurate and only 15x slower, and the deep hedger beats naive delta by 11 to 15 percent CVaR under transaction costs while a fairly tuned no-trade band captures most of that gap.
-- [yield-curve-factor-analysis](https://github.com/aamirmalik-dr/yield-curve-factor-analysis) - PCA and NMF of the US Treasury yield curve, recovering the classic level, slope, and curvature factors, with a resilient offline-capable data pipeline.
-- [time-series-forecasting](https://github.com/aamirmalik-dr/time-series-forecasting) - STL decomposition and ARIMA/SARIMAX forecasting with a walk-forward backtest reporting RMSE and MAPE.
-
 ## Computer vision: classification, generation, and adversarial robustness
 
 - [image-classification-pytorch](https://github.com/aamirmalik-dr/image-classification-pytorch) - A CIFAR-10 architecture study (MLP, CNN, VGG-style, ResNet-style) compared under one training budget, with a regularization ablation.
@@ -70,6 +58,13 @@ classical baselines, and the defended null results are the point.
 
 - [text-sentiment-lstm](https://github.com/aamirmalik-dr/text-sentiment-lstm) - A bidirectional LSTM sentiment classifier in PyTorch with a from-scratch tokenizer and optional GloVe embeddings, on public Rotten Tomatoes data.
 - [neural-machine-translation](https://github.com/aamirmalik-dr/neural-machine-translation) - A sequence-to-sequence model with Bahdanau attention, built from scratch in PyTorch, demonstrated on a date-normalization task with interpretable attention alignments.
+
+## Quantitative finance and time series
+
+- [neural-option-pricing](https://github.com/aamirmalik-dr/neural-option-pricing) - Four option-pricing engines from scratch (Black-Scholes, binomial, Crank-Nicolson, variance-reduced Monte Carlo), Heston priced by characteristic function and simulation, a neural pricing surrogate, and a CVaR-trained deep hedging policy, all on simulated markets. Honest verdicts: the surrogate is 4,600x faster than adaptive quadrature while a well-vectorized 32-node quadrature is 9x more accurate and only 15x slower, and the deep hedger beats naive delta by 11 to 15 percent CVaR under transaction costs while a fairly tuned no-trade band captures most of that gap.
+- [financial-forecasting-benchmarks](https://github.com/aamirmalik-dr/financial-forecasting-benchmarks) - A walk-forward benchmark of ML models against fair-tuned classical baselines for daily return and volatility forecasting on eight US ETFs over two decades. The headline is a defended null result: next-day returns are essentially unforecastable out of sample, and GARCH(1,1) beats LightGBM and an LSTM at volatility forecasting, with Diebold-Mariano tests and block-bootstrap intervals throughout.
+- [yield-curve-factor-analysis](https://github.com/aamirmalik-dr/yield-curve-factor-analysis) - PCA and NMF of the US Treasury yield curve, recovering the classic level, slope, and curvature factors, with a resilient offline-capable data pipeline.
+- [time-series-forecasting](https://github.com/aamirmalik-dr/time-series-forecasting) - STL decomposition and ARIMA/SARIMAX forecasting with a walk-forward backtest reporting RMSE and MAPE.
 
 ## Neural networks and classical ML from scratch
 
