@@ -15,10 +15,6 @@ including the negative ones.
 
 ## Machine learning interatomic potentials
 
-Four connected repositories on one chemistry, BCC TiZrNb solid solutions,
-trained by distillation from a universal-potential teacher whose labels are
-clearly marked as surrogate, not DFT, so results compare directly across repos.
-
 - [mlip-descriptor-potential](https://github.com/aamirmalik-dr/mlip-descriptor-potential) - A Behler-Parrinello neural network potential from scratch in PyTorch: periodic neighbor lists, atom-centered symmetry functions, per-element networks, and autograd forces. Benchmarked at matched budget against a tuned ridge model and a Morse pair potential, with a leakage-safe group split and equation-of-state validation against Materials Project anchors.
 - [graph-neural-forcefield](https://github.com/aamirmalik-dr/graph-neural-forcefield) - A SchNet-style message-passing potential on the same chemistry, benchmarked head to head against the descriptor network and the ridge baseline. The headline is data efficiency: it matches the linear baseline's full-data force accuracy with 102 of 882 training frames and halves force error at matched budget.
 - [alloy-mlip-bench](https://github.com/aamirmalik-dr/alloy-mlip-bench) - The potentials deployed as ASE calculators and benchmarked against CHGNet and MACE-MP-0 small on what they predict: equation of state, elastic constants, RDFs, thermal expansion, and vacancy formation. Mean deviation from DFT anchors falls monotonically with CPU cost, and the compact distilled model nearly matches its teacher at 14.6x the MD speed.
