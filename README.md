@@ -1,6 +1,6 @@
 ﻿# Aamir Malik
 
-Computational materials scientist (PhD, KAIST) working at the intersection of
+Data-Driven Materials Scientist (PhD, KAIST) working at the intersection of
 machine learning and the physical sciences. My work spans machine-learned
 interatomic potentials, molecular representation learning, deep learning for
 electron microscopy, active learning and uncertainty quantification,
