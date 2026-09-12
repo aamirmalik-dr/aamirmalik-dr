@@ -1,10 +1,11 @@
 ﻿# Aamir Malik
 
 Data-Driven Materials Scientist (PhD, KAIST) working at the intersection of
-machine learning and the physical sciences. My work spans machine-learned
-interatomic potentials, molecular representation learning, deep learning for
-electron microscopy, active learning and uncertainty quantification,
-quantitative finance, generative models, and classical statistics.
+machine learning and the physical sciences. My work spans density-functional
+calculations, machine-learned interatomic potentials, molecular representation
+learning, deep learning for electron microscopy, active learning and
+uncertainty quantification, quantitative finance, generative models, and
+classical statistics.
 
 Two habits run through everything here. I build the core machinery from
 scratch, periodic neighbor lists, message passing, backpropagation, attention,
@@ -13,8 +14,9 @@ fair-tuned classical baseline. Each repository has an honest README, a
 reproducible demo that was actually run, and only real measured results,
 including the negative ones.
 
-## Machine learning interatomic potentials
+## First-principles calculations and machine learning interatomic potentials
 
+- [pd-hydrogen-diffusion-dft](https://github.com/aamirmalik-dr/pd-hydrogen-diffusion-dft) - Hydrogen diffusion in fcc palladium from CP-PAW density-functional calculations: a translation-invariant reaction coordinate, the octahedral-to-tetrahedral energy profile, and harmonic transition-state theory, with every input and protocol committed. The diffusion constant comes within a factor of seven of experiment, with its convergence limits stated plainly.
 - [mlip-descriptor-potential](https://github.com/aamirmalik-dr/mlip-descriptor-potential) - A Behler-Parrinello neural network potential from scratch in PyTorch: periodic neighbor lists, atom-centered symmetry functions, per-element networks, and autograd forces, benchmarked at matched budget against a tuned ridge model and a Morse pair potential with a leakage-safe group split.
 - [graph-neural-forcefield](https://github.com/aamirmalik-dr/graph-neural-forcefield) - A SchNet-style message-passing potential on the same chemistry, benchmarked head to head against the descriptor network and the ridge baseline. The headline is data efficiency: it matches the linear baseline's full-data force accuracy with 102 of 882 training frames.
 - [alloy-mlip-bench](https://github.com/aamirmalik-dr/alloy-mlip-bench) - The potentials deployed as ASE calculators and benchmarked against CHGNet and MACE-MP-0 small on equation of state, elastic constants, RDFs, thermal expansion, and vacancy formation. The compact distilled model nearly matches its teacher at 14.6x the MD speed.
@@ -78,6 +80,7 @@ including the negative ones.
 
 - Languages: Python, R
 - Frameworks and libraries: PyTorch, scikit-learn, NumPy, ASE, RDKit, statsmodels, networkx, pandas, Matplotlib
+- Simulation codes: CP-PAW (density-functional theory, projector augmented wave method)
 - Learned methods: message passing neural networks, interatomic potentials with autograd forces, U-Net segmentation, CNNs, LSTMs, sequence-to-sequence with attention, variational autoencoders, GANs
 - Statistical methods: Gaussian-process regression, active learning, PCA/NMF/VCA decompositions, ARIMA/SARIMAX and GARCH modeling, walk-forward evaluation with Diebold-Mariano tests and block bootstrap, multiple-testing control with Benjamini-Hochberg FDR
 
