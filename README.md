@@ -4,8 +4,8 @@ Data-Driven Materials Scientist (PhD, KAIST) working at the intersection of
 machine learning and the physical sciences. My work spans density-functional
 calculations, machine-learned interatomic potentials, molecular representation
 learning, deep learning for electron microscopy, active learning and
-uncertainty quantification, quantitative finance, generative models, and
-classical statistics.
+uncertainty quantification, quantitative finance, generative models,
+classical statistics, and the evaluation of tool-using LLM agents.
 
 Two habits run through everything here. I build the core machinery from
 scratch, periodic neighbor lists, message passing, backpropagation, attention,
@@ -75,6 +75,14 @@ including the negative ones.
 - [tabular-ml-pipeline](https://github.com/aamirmalik-dr/tabular-ml-pipeline) - A reusable scikit-learn pipeline for messy tabular data: ColumnTransformer imputation and encoding, LASSO feature selection, and a tuned multi-model comparison, on the public UCI Adult dataset.
 - [temporal-network-analysis](https://github.com/aamirmalik-dr/temporal-network-analysis) - Per-phase structure and centrality trajectories in a time-varying network with networkx, validated on a synthetic role-planted graph, with an optional path to the public SNAP CollegeMsg dataset.
 - [statistical-methods-in-r](https://github.com/aamirmalik-dr/statistical-methods-in-r) - A collection of statistical analyses in base R: hypothesis testing, ANOVA, regression, PCA and factor analysis, and from-scratch association-rule mining, fully reproducible with no external packages.
+
+## Agentic AI and evaluation
+
+- [evidence-ledger-agent](https://github.com/aamirmalik-dr/evidence-ledger-agent) - An evidence agent that checks narrow materials claims against a local corpus, binding every quote to a document hash and character offsets. With both models tested, one well-retrieved model call matched or beat the iterative agent at a fraction of the tokens.
+- [agent-contract-bench](https://github.com/aamirmalik-dr/agent-contract-bench) - A harness for tool-using LLM agents under capability contracts, with fault injection and prompt-injection scenarios, counting attempted, blocked and executed violations apart. One pre-registered prompt rule lifted completion from 5 to 17 of 20 with no executed violations; a rule-based baseline still finished every task.
+- [scientific-recovery-agent](https://github.com/aamirmalik-dr/scientific-recovery-agent) - An agent that diagnoses failed toy numerical runs and applies allowlisted, approval-gated patches with validation on a copy and rollback. The iterative agent never beat a single model call: 15 against 16 of 20 with the smaller model, tied at 10 of 10 with a stronger one.
+- [budgeted-discovery-agent](https://github.com/aamirmalik-dr/budgeted-discovery-agent) - An LLM orchestrating a budgeted, multi-fidelity experiment campaign on synthetic response surfaces through a cost ledger with receipts. A single model call and a tuned GP-UCB rule both beat the iterative agent, which ran out of its token budget with the smaller model.
+- [reproducible-experiment-agent](https://github.com/aamirmalik-dr/reproducible-experiment-agent) - An experiment-planning agent for tabular ML with a scikit-learn allowlist, leakage traps, one-shot holdout scoring and byte-identical reproduction of every frozen candidate. Both LLM planners beat a fixed pipeline and random search; iterating added little over a single model call.
 
 ## Skills and tools
 
