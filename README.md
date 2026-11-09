@@ -78,19 +78,20 @@ including the negative ones.
 
 ## Agentic AI and evaluation
 
-- [evidence-ledger-agent](https://github.com/aamirmalik-dr/evidence-ledger-agent) - An evidence agent that checks narrow materials claims against a local corpus, binding every quote to a document hash and character offsets. With both models tested, one well-retrieved model call matched or beat the iterative agent at a fraction of the tokens.
-- [agent-contract-bench](https://github.com/aamirmalik-dr/agent-contract-bench) - A harness for tool-using LLM agents under capability contracts, with fault injection and prompt-injection scenarios, counting attempted, blocked and executed violations apart. One pre-registered prompt rule lifted completion from 5 to 17 of 20 with no executed violations; a rule-based baseline still finished every task.
-- [scientific-recovery-agent](https://github.com/aamirmalik-dr/scientific-recovery-agent) - An agent that diagnoses failed toy numerical runs and applies allowlisted, approval-gated patches with validation on a copy and rollback. The iterative agent never beat a single model call: 15 against 16 of 20 with the smaller model, tied at 10 of 10 with a stronger one.
-- [budgeted-discovery-agent](https://github.com/aamirmalik-dr/budgeted-discovery-agent) - An LLM orchestrating a budgeted, multi-fidelity experiment campaign on synthetic response surfaces through a cost ledger with receipts. A single model call and a tuned GP-UCB rule both beat the iterative agent, which ran out of its token budget with the smaller model.
-- [reproducible-experiment-agent](https://github.com/aamirmalik-dr/reproducible-experiment-agent) - An experiment-planning agent for tabular ML with a scikit-learn allowlist, leakage traps, one-shot holdout scoring and byte-identical reproduction of every frozen candidate. Both LLM planners beat a fixed pipeline and random search; iterating added little over a single model call.
+- [evidence-ledger-agent](https://github.com/aamirmalik-dr/evidence-ledger-agent) ([v0.3.0](https://github.com/aamirmalik-dr/evidence-ledger-agent/releases/tag/v0.3.0)) - An evidence agent that checks narrow materials-science claims against a local corpus, binding every quote to a document hash and character offsets. With both models tested, one well-retrieved model call matched or beat the iterative agent at a fraction of the tokens.
+- [agent-contract-bench](https://github.com/aamirmalik-dr/agent-contract-bench) ([v0.2.0](https://github.com/aamirmalik-dr/agent-contract-bench/releases/tag/v0.2.0)) - A harness for tool-using LLM agents under capability contracts, with fault and prompt injection, counting attempted, blocked and executed violations apart. One pre-registered prompt rule lifted completion from 5 to 17 of 20; a rule-based baseline still finished every task.
+- [scientific-recovery-agent](https://github.com/aamirmalik-dr/scientific-recovery-agent) ([v0.2.0](https://github.com/aamirmalik-dr/scientific-recovery-agent/releases/tag/v0.2.0)) - An agent that diagnoses failed toy numerical runs and repairs them with allowlisted, approval-gated patches tested on a copy. It never beat a single model call: 15 against 16 of 20 with the smaller model, tied at 10 of 10 with a stronger one.
+- [budgeted-discovery-agent](https://github.com/aamirmalik-dr/budgeted-discovery-agent) ([v0.2.0](https://github.com/aamirmalik-dr/budgeted-discovery-agent/releases/tag/v0.2.0)) - An LLM running budgeted, multi-fidelity screening campaigns on synthetic response surfaces, with every assay unit recorded as a receipt in a cost ledger. A single planning call and a tuned GP-UCB rule both beat the iterative agent, which mostly hit its token cap.
+- [reproducible-experiment-agent](https://github.com/aamirmalik-dr/reproducible-experiment-agent) ([v0.2.0](https://github.com/aamirmalik-dr/reproducible-experiment-agent/releases/tag/v0.2.0)) - An experiment-planning agent for tabular ML with a pipeline allowlist, leakage traps, one-shot holdout scoring, and byte-identical reproduction of every frozen candidate. Both LLM planners beat a fixed pipeline and random search, but iterating added little over a single planning call.
 
 ## Skills and tools
 
 - Languages: Python, R
-- Frameworks and libraries: PyTorch, scikit-learn, NumPy, ASE, RDKit, statsmodels, networkx, pandas, Matplotlib
+- Frameworks and libraries: PyTorch, scikit-learn, NumPy, ASE, RDKit, statsmodels, networkx, pandas, Matplotlib, pydantic
 - Simulation codes: CP-PAW (density-functional theory, projector augmented wave method)
 - Learned methods: message passing neural networks, interatomic potentials with autograd forces, U-Net segmentation, CNNs, LSTMs, sequence-to-sequence with attention, variational autoencoders, GANs
 - Statistical methods: Gaussian-process regression, active learning, PCA/NMF/VCA decompositions, ARIMA/SARIMAX and GARCH modeling, walk-forward evaluation with Diebold-Mariano tests and block bootstrap, multiple-testing control with Benjamini-Hochberg FDR
+- LLM agents and evaluation: tool-calling loops with typed tool schemas and policy gates, checkpointed resumable episodes, pre-registered held-out evaluation, paired task-level bootstrap intervals
 
 ## Contact
 
